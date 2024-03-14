@@ -8,7 +8,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [ProjectController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::prefix('usuario')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [ProjectController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

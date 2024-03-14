@@ -12,7 +12,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        echo 'Hola';
+        $proyectos = Project::all();
+
+        return view('dashboard', compact('proyectos'));
     }
 
     /**
